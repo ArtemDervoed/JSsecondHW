@@ -1,3 +1,5 @@
+// аккаунт тестировался в браузере Opera
+//все работает и доступно из консоли
 function Account (accountName) {
     this.accountName = accountName;
     this.balance = 0;

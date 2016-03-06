@@ -1,5 +1,8 @@
-var TransferService =  {
-  register : function(person, account, balance){
+//сервис тестировался в браузере Opera
+//все работает и доступно из консоли
+
+var TransferService = (function() {
+   function registerPublic(person, account, balance){
     if(balance>=0){
      account.isActive = true;
      account.balance+= balance;
@@ -9,9 +12,9 @@ var TransferService =  {
     throw "incorrected balance";
 }
 return account;
-},
-//По умолчанию функция передает весь баланс на другой аккаунт
-transfer : function(accountFrom,accountTo){
+}
+
+ function transferPublic(accountFrom,accountTo){
     if(accountFrom.isActive===true || accountTo.isActive === true){
      if(accountFrom.balance>=0){ 
          var transferSum = accountFrom.balance;
@@ -29,10 +32,15 @@ transfer : function(accountFrom,accountTo){
     }
 } else {
     throw "account is not active";
-} 
-},
-getPersonAccounts : function(person){
+  } 
+}
+
+function getPersonAccountsPublic(person){
  return person.accounts;
 }
+return {
+    register :registerPublic,
+    transfer :transferPublic,
+    getPersonAccounts:getPersonAccountsPublic
 };
-
+})();

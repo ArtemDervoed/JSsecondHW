@@ -1,3 +1,5 @@
+// Person тестировался в браузере Opera
+//все работает и доступно из консоли
   function Person (name,birthDate) {
     this.name = name;
     this.birthDate = birthDate;
